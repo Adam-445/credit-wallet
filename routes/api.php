@@ -21,7 +21,7 @@ Route::middleware('auth:api')->group(function () {
 
     // Wallet
     Route::get('/wallet', [WalletController::class, 'index']);
-    Route::post('/walled/spend', [WalletController::class, 'spend']);
+    Route::post('/wallet/spend', [WalletController::class, 'spend']);
 
     // Admin
     Route::prefix('admin')->middleware('role:admin')->group(function () {
