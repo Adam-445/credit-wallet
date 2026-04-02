@@ -7,22 +7,14 @@ use Illuminate\Validation\ValidationException;
 
 class WalletController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
-
     public function index()
     {
-        $user = auth()->user();
-        return response()->json(['solde' => $user->solde]);
+        return response()->json(['solde' => auth()->user()->solde]);
     }
 
     public function spend(Request $request)
     {
-        $request->validate([
-            'montant' => 'required|integer|min:10',
-        ]);
+        $request->validate(['montant' => 'required|integer|min:10']);
 
         $user = auth()->user();
         $montant = $request->montant;
